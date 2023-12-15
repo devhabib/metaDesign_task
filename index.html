@@ -1,39 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TodoApp</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
   </head>
+
   <body id="app">
     <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
           <!-- Start: Todo Container -->
-          <div class="card todo">
-            <div class="card-header bg-primary-subtle">
-              <h5 class="card-title">Todo</h5>
+          <div class="card todo my-4 shadow-lg">
+            <!-- Start: Todo Top area -->
+            <div class="card-header bg-primary-subtle d-flex align-items-center justify-content-between">
+              <h3 class="card-title m-0">Upcoming Activities</h3>
+              <button class="btn btn-secondary rounded-circle" data-bs-toggle="modal" data-bs-target="#addTodo">
+                <i class="fa-solid fa-plus"></i>
+              </button>
             </div>
-            <div class="card-body">
-              <h6 class="card-subtitle mb-2 text-body-secondary">
-                Card subtitle
-              </h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
+            <!-- End: Todo Top Area -->
+
+            <!-- Start: Todo List area -->
+            <ul class="list-group list-group-flush">
+              <li class="todo__item d-flex align-items-center justify-content-between w-100 py-2 list-group-item">
+                <!-- Start: Todo Content -->
+                <div class="todo__item--left d-flex justify-content-between align-items-center">
+                  <div class="todo__left--content">
+                    <h5 class="card-subtitle">Call Katie</h5>
+                    <p class="text-body-secondary m-0"> <span class="date">Aug 27, 2020</span> | <span
+                        class="name">Daniel</span> </p>
+                  </div>
+                  <div class="todo__left--check">
+                    <button class="btn">
+                      <i class="fa-solid fa-check"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- End: Todo Content -->
+
+                <!-- Start: Todo Menu Trigger -->
+                <div class="todo__item--right">
+                  <button class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li><button class="dropdown-item" type="button">Mark as done</button></li>
+                    <li><button class="dropdown-item" type="button">Delete</button></li>
+                  </ul>
+                </div>
+                <!-- End: Todo Menu Trigger -->
+              </li>
+            </ul>
+            <!-- End: Todo List area -->
           </div>
           <!-- End: Todo Container -->
         </div>
       </div>
     </div>
+
+    <!-- Start: Modal -->
+    <div class="modal fade" id="addTodo" tabindex="-1" aria-labelledby="todoLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="todoLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End: Modal -->
     <script type="module" src="/main.js"></script>
   </body>
+
 </html>
