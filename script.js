@@ -13,6 +13,21 @@ document.addEventListener("DOMContentLoaded", function () {
   noTodoMessage.classList.add("text-center", "mt-3", "no-todo-message");
   todoList.appendChild(noTodoMessage);
 
+  // Error containers for each input
+  const dateErrorContainer = document.getElementById("dateError");
+  const fullNameErrorContainer = document.getElementById("fullNameError");
+  const nickNameErrorContainer = document.getElementById("nickNameError");
+
+  function displayError(container, message) {
+    // Clear previous error messages
+    container.innerHTML = "";
+
+    // Display new error message
+    const errorMessage = document.createElement("p");
+    errorMessage.innerText = message;
+    container.appendChild(errorMessage);
+  }
+
   function createTodoItem(title, date, name) {
     // Start: Create Todo Item
     const listItem = document.createElement("li");
@@ -83,11 +98,31 @@ document.addEventListener("DOMContentLoaded", function () {
   const saveTodoBtn = document.querySelector("#saveTodoBtn");
 
   saveTodoBtn.addEventListener("click", function () {
+    // Clear previous error messages
+    dateErrorContainer.innerHTML = "";
+    fullNameErrorContainer.innerHTML = "";
+    nickNameErrorContainer.innerHTML = "";
+
     const title = document.getElementById("fullName").value;
     const date = document.getElementById("date").value;
     const name = document.getElementById("nickName").value;
 
-    if (title && date && name) {
+    if (!title) {
+      displayError(fullNameErrorContainer, "Full Name is required");
+    }
+    if (!date) {
+      displayError(dateErrorContainer, "Date is required");
+    }
+    if (!name) {
+      displayError(nickNameErrorContainer, "Nickname is required");
+    }
+
+    // If there are no errors, proceed to create and add a new todo item
+    if (
+      !dateErrorContainer.hasChildNodes() &&
+      !fullNameErrorContainer.hasChildNodes() &&
+      !nickNameErrorContainer.hasChildNodes()
+    ) {
       // Remove the "No todo available" message if it exists
       const noTodoMessage = todoList.querySelector(".no-todo-message");
       if (noTodoMessage) {
@@ -99,12 +134,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       addTodoModal.hide();
 
+      // Clear form fields
       document.getElementById("fullName").value = "";
       document.getElementById("date").value = "";
       document.getElementById("nickName").value = "";
-    } else {
-      const errorContainer = document.getElementById("formError");
-      errorContainer.innerText = "Please fill in all the fields.";
     }
   });
   // End: Save Todo Button Event Listener
@@ -114,10 +147,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   addTodoBtn.addEventListener("click", function () {
     // Start: Clear Error Message
-    const errorContainer = document.getElementById("formError");
-    if (errorContainer) {
-      errorContainer.innerText = ""; // Clear the error message when opening the modal
-    }
+    dateErrorContainer.innerHTML = "";
+    fullNameErrorContainer.innerHTML = "";
+    nickNameErrorContainer.innerHTML = "";
     // End: Clear Error Message
 
     addTodoModal.show();
