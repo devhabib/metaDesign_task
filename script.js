@@ -7,11 +7,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const todoList = document.querySelector(".list-group");
 
+  // Function to update "No todo available" message
+  function updateNoTodoMessage() {
+    const noTodoMessageIcon = todoList.querySelector(".fa-ban");
+    if (todoList.children.length === 0) {
+      // Add "No todo available" icon if there are no todos
+      if (!noTodoMessageIcon) {
+        const newNoTodoMessageIcon = document.createElement("i");
+        newNoTodoMessageIcon.classList.add("fa-solid", "fa-ban");
+        todoList.appendChild(newNoTodoMessageIcon);
+      }
+    } else {
+      // Remove "No todo available" icon if there are todos
+      if (noTodoMessageIcon) {
+        noTodoMessageIcon.remove();
+      }
+    }
+  }
+
   // Initial "No todo available" message
-  const noTodoMessage = document.createElement("p");
-  noTodoMessage.innerText = "No todo available";
-  noTodoMessage.classList.add("text-center", "mt-3", "no-todo-message");
-  todoList.appendChild(noTodoMessage);
+  updateNoTodoMessage();
 
   // Error containers for each input
   const dateErrorContainer = document.getElementById("dateError");
@@ -73,6 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Mark as done clicked");
       const checkMark = listItem.querySelector(".done");
       checkMark.classList.toggle("d-none");
+
+      // Update "No todo available" message
+      updateNoTodoMessage();
     });
     // End: Mark as Done Button Event Listener
 
@@ -81,13 +99,8 @@ document.addEventListener("DOMContentLoaded", function () {
       listItem.remove();
       console.log("Delete clicked");
 
-      // Check if there are no todo items and display the "No todo available" message
-      if (todoList.children.length === 0) {
-        const noTodoMessage = document.createElement("p");
-        noTodoMessage.innerText = "No todo available";
-        noTodoMessage.classList.add("text-center", "mt-3", "no-todo-message");
-        todoList.appendChild(noTodoMessage);
-      }
+      // Update "No todo available" message
+      updateNoTodoMessage();
     });
     // End: Delete Todo Button Event Listener
 
@@ -124,9 +137,9 @@ document.addEventListener("DOMContentLoaded", function () {
       !nickNameErrorContainer.hasChildNodes()
     ) {
       // Remove the "No todo available" message if it exists
-      const noTodoMessage = todoList.querySelector(".no-todo-message");
-      if (noTodoMessage) {
-        noTodoMessage.remove();
+      const noTodoMessageIcon = todoList.querySelector(".fa-ban");
+      if (noTodoMessageIcon) {
+        noTodoMessageIcon.remove();
       }
 
       const newTodoItem = createTodoItem(title, date, name);

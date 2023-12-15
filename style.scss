@@ -26,6 +26,7 @@ body {
 // Todo Style
 .todo {
   // Start: Todo Top/Title Style
+
   .card-title {
     font-size: 20px;
   }
@@ -65,5 +66,27 @@ body {
     &--right {
       width: 20px;
     }
+  }
+  .list-group {
+    max-height: calc(100vh - 90px);
+    overflow: auto;
+    min-height: 145px;
+    i {
+      &.fa-ban {
+        font-size: 50px;
+        color: lighten($color: #db0d0d, $amount: 40);
+        text-align: center;
+        line-height: 145px;
+      }
+    }
+  }
+}
+
+// Modal Style
+.modal {
+  .error-container {
+    font-size: 12px;
+    font-weight: 400;
+    color: #db0d0d;
   }
 }
