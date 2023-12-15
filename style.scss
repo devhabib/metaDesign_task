@@ -11,3 +11,59 @@ html,
 body {
   height: 100%;
 }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-weight: 700;
+  }
+}
+
+// Todo Style
+.todo {
+  // Start: Todo Top/Title Style
+  .card-title {
+    font-size: 20px;
+  }
+  &__top--btn {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+    padding: initial;
+  }
+  // End: Todo Top/Title Style
+
+  &__item {
+    // Start: Todo Body Left
+    &--left {
+      width: calc(100% - 20px);
+      .todo__left {
+        &--content {
+          h5 {
+            font-size: 18px;
+          }
+        }
+        &--check {
+          .done {
+            background-color: #009c00;
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            font-size: 12px;
+            line-height: 20px;
+            text-align: center;
+            color: #fff;
+          }
+        }
+      }
+    }
+    // End: Todo Body Left
+    &--right {
+      width: 20px;
+    }
+  }
+}

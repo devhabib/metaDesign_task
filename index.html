@@ -19,7 +19,8 @@
             <!-- Start: Todo Top area -->
             <div class="card-header bg-primary-subtle d-flex align-items-center justify-content-between">
               <h3 class="card-title m-0">Upcoming Activities</h3>
-              <button class="btn btn-secondary rounded-circle" data-bs-toggle="modal" data-bs-target="#addTodo">
+              <button id="addTodoBtn" class="todo__top--btn btn btn-secondary rounded-circle" data-bs-toggle="modal"
+                data-bs-target="#addTodo">
                 <i class="fa-solid fa-plus"></i>
               </button>
             </div>
@@ -27,34 +28,7 @@
 
             <!-- Start: Todo List area -->
             <ul class="list-group list-group-flush">
-              <li class="todo__item d-flex align-items-center justify-content-between w-100 py-2 list-group-item">
-                <!-- Start: Todo Content -->
-                <div class="todo__item--left d-flex justify-content-between align-items-center">
-                  <div class="todo__left--content">
-                    <h5 class="card-subtitle">Call Katie</h5>
-                    <p class="text-body-secondary m-0"> <span class="date">Aug 27, 2020</span> | <span
-                        class="name">Daniel</span> </p>
-                  </div>
-                  <div class="todo__left--check">
-                    <button class="btn">
-                      <i class="fa-solid fa-check"></i>
-                    </button>
-                  </div>
-                </div>
-                <!-- End: Todo Content -->
-
-                <!-- Start: Todo Menu Trigger -->
-                <div class="todo__item--right">
-                  <button class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                    <li><button class="dropdown-item" type="button">Mark as done</button></li>
-                    <li><button class="dropdown-item" type="button">Delete</button></li>
-                  </ul>
-                </div>
-                <!-- End: Todo Menu Trigger -->
-              </li>
+              <!-- Todo items will be dynamically added here -->
             </ul>
             <!-- End: Todo List area -->
           </div>
@@ -68,21 +42,34 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="todoLabel">Modal title</h1>
+            <h1 class="modal-title fs-5" id="todoLabel">Book Visit</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            ...
+            <div class="mb-3">
+              <label for="date" class="form-label">Date of Birth</label>
+              <input type="date" class="form-control" id="date" placeholder="MM/DD/YYYY">
+            </div>
+            <div class="mb-3">
+              <label for="fullName" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="fullName" placeholder="Input Full Name">
+            </div>
+            <div class="mb-3">
+              <label for="nickName" class="form-label">Nickname</label>
+              <input type="text" class="form-control" id="nickName" placeholder="Input Nickname">
+            </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button id="saveTodoBtn" type="button" class="btn btn-primary">Save</button>
           </div>
         </div>
       </div>
     </div>
     <!-- End: Modal -->
+
     <script type="module" src="/main.js"></script>
+    <script type="module" src="/script.js"></script>
   </body>
 
 </html>
